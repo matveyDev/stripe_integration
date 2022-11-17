@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+
+  backend:
+    image: stripe-django
+    build: .
+    ports:
+      - 8000:8000
+  
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_DB: stripe_integration
+      POSTGRES_PASSWORD: admin123
