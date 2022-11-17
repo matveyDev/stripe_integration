@@ -5,11 +5,26 @@ services:
   backend:
     image: stripe-django
     build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
-  
-  db:
+    depends_on:
+      - database
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d stripe_integration"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  database:
     image: postgres
+    ports:
+      - 5431:5432
     environment:
       POSTGRES_USER: admin
       POSTGRES_DB: stripe_integration
