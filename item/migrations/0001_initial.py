@@ -12,7 +12,19 @@ class Migration(migrations.Migration):
         ('order', '0001_initial'),
     ]
 
+    def generate_superuser(apps, schema):
+        from django.contrib.auth.models import User
+
+        superuser = User.objects.create_superuser(
+            username='admin',
+            email='admin@example.exp',
+            password='123'
+        )
+
+        superuser.save()
+
     operations = [
+        migrations.RunPython(generate_superuser),
         migrations.CreateModel(
             name='Item',
             fields=[
