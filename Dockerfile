@@ -2,9 +2,9 @@ FROM python:3.9
 
 WORKDIR /backend
 
-COPY req.txt ./
+COPY requirements.txt ./
 
-RUN pip install -r req.txt
+RUN pip install -r requirements.txt
 
 COPY ./ ./
 
