@@ -18,13 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 
-from .api import GetHTMLtoChechout, get_session_id
+from .api import GetHTMLtoChechout, GetSessionID
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     
-    path('buy/<int:id>/', get_session_id),
+    path('buy/<int:id>/', GetSessionID.as_view()),
     path('item/<int:id>/', GetHTMLtoChechout.as_view()),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

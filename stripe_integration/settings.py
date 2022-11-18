@@ -86,8 +86,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'stripe_integration',
         'USER': 'admin',
-        'HOST': 'database',
-        # 'HOST': 'localhost',
+        # 'HOST': 'database',
+        'HOST': 'localhost',
         'PASSWORD': 'admin123',
         'PORT': 5432,
     }

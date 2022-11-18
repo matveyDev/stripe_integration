@@ -9,10 +9,11 @@ from stripe_api.api import StripeAPI
 API = StripeAPI()
 
 
-@api_view(['GET'])
-def get_session_id(request, id: int):
-    session_id = API._get_session_id(id)
-    return Response({'session_id': session_id})
+class GetSessionID(APIView):
+
+    def get(self, request, id: int):
+        session_id = API._get_session_id(id)
+        return Response({'session_id': session_id})
 
 
 class GetHTMLtoChechout(APIView):
