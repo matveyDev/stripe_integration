@@ -18,8 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 
+from .api import ProfileList, get_session_id
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    
+    path('buy/<int:id>/', get_session_id),
+    path('item/<int:id>/', ProfileList.as_view()),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

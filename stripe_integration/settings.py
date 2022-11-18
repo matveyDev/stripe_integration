@@ -61,7 +61,9 @@ ROOT_URLCONF = 'stripe_integration.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'stripe_integration/templates/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,12 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'stripe_integration.wsgi.application'
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -90,6 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'stripe_integration',
         'USER': 'admin',
+        # 'HOST': 'database',
         'HOST': 'localhost',
         'PASSWORD': 'admin123',
         'PORT': 5432,
