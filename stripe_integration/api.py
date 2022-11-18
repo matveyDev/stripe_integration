@@ -15,7 +15,7 @@ def get_session_id(request, id: int):
     return Response({'session_id': session_id})
 
 
-class ProfileList(APIView):
+class GetHTMLtoChechout(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'item_buy.html'
 
